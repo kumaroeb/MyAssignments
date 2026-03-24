@@ -81,7 +81,7 @@ def main():
 
     # If rare_combined itself is still too small or doesn't exist, fall back to no stratification
     stratify_counts = stratify_col.value_counts()
-    use_stratify = all(c >= 2 for c in stratify_counts.values())
+    use_stratify = all(c >= 2 for c in stratify_counts.values)
 
     if use_stratify:
         train_df, valtest_df = train_test_split(
@@ -101,7 +101,7 @@ def main():
     valtest_stratify[rare_mask2] = "rare_combined"
 
     vt_strat_counts = valtest_stratify.value_counts()
-    use_stratify2 = all(c >= 2 for c in vt_strat_counts.values())
+    use_stratify2 = all(c >= 2 for c in vt_strat_counts.values)
 
     relative_test = ratios["test"] / val_test_ratio
     if use_stratify2:
